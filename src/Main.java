@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -9,19 +10,24 @@ public class Main {
             int[][] graph = generateRandomGraph(n, density);
 
             long startTime = System.nanoTime();
-            Dijkstra.dijkstra(graph, 0);
+//            Dijkstra.dijkstra(graph, 0);
+            PrimAlgorithm.primMST(graph, graph.length);
             long endTime = System.nanoTime();
             long totalTime = endTime - startTime;
             System.out.println("Nodes: " + n);
-            System.out.println("Dijkstra time taken: " + totalTime + " nano seconds");
+//            System.out.println("Dijkstra time taken: " + totalTime + " nano seconds");
+            System.out.println("Prim time taken: " + totalTime + " nano seconds");
 
             long startTime2 = System.nanoTime();
-            FloydWarshall.floydWarshall(graph, graph.length);
+//            FloydWarshall.floydWarshall(graph, graph.length);
+            KruskalAlgorithm.kruskal(graph);
             long endTime2 = System.nanoTime();
             long totalTime2 = endTime2 - startTime2;
-            System.out.println("FloydWarshall time taken: " + totalTime2 + " nano seconds");
+//            System.out.println("FloydWarshall time taken: " + totalTime2 + " nano seconds");
+            System.out.println("Kruskal time taken: " + totalTime2 + " nano seconds");
             System.out.println();
         }
+
     }
 
     public static int[][] generateRandomGraph(int n, int density) {
